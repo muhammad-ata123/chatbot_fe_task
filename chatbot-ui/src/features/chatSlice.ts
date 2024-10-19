@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Message {
-  user: boolean;
-  type: string | undefined;
-  text?: string;
+export interface Message {
+  user: boolean; // Indicates if the message is from the user or bot
+  type: 'text' | 'graph' | 'table' | 'code'; // Include all types here
+  text?: string; // Optional text for user message
+  data?: any; // Optional text data for bot responses
+  timestamp?: string; // timestamp property
 }
 
+
 interface ChatState {
-  messages: Message[];
+  messages: Message[]; 
 }
 
 const initialState: ChatState = {

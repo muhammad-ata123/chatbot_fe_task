@@ -22,6 +22,5 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ text, user }) => {
       </Box>
     );
   };
-  
 
 export default MessageBubble;
