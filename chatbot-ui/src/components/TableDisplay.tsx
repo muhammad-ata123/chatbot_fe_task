@@ -16,7 +16,7 @@ const TableDisplay: React.FC<TableDisplayProps> = ({ data }) => {
         padding: '20px',
         backgroundColor: '#F4F9F8',
         borderRadius: '10px 20px 20px 20px',
-        boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+        // boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
         width: '100%',
         height: 'auto',
         position: 'relative',

@@ -7,11 +7,12 @@ import { addMessage } from './features/chatSlice';
 import MessageBubble from './components/MessageBubble';
 import Graph from './components/Graph';
 import TableDisplay from './components/TableDisplay';
-import CodeDisplay from './components/CodeDisplay';
 import TextDisplay from './components/TextDisplay';
 import { JsonCode, JsonTable, JsonGraph, JsonTextResponses } from "./json";
 import { Message } from './features/chatSlice';
-import CenteredBox from './components/CenteredBox'; 
+import CenteredBox from './components/CenteredBox';
+import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
+import './App.css';
 
 const App: React.FC = () => {
   const [chatInput, setChatInput] = useState<string>('');
@@ -27,7 +28,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleSend = () => {
+  const handleSend = (event: any) => {
     if (chatInput.trim() !== '') {
       const currentInput = chatInput.trim();
       const userMessage: Message = {
@@ -104,6 +105,16 @@ const App: React.FC = () => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSend(event);
+    }
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    handleSend(event);
+  };
+
   return (
     <Box
       display="flex"
@@ -112,7 +123,8 @@ const App: React.FC = () => {
       height="90vh"
       maxWidth="900px"
       margin="auto"
-      padding="20px"
+      borderRadius="15px"
+      overflow="hidden"
       bgcolor="background.default"
     >
       <Paper
@@ -121,8 +133,8 @@ const App: React.FC = () => {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: '15px',
           overflow: 'hidden',
+
         }}
       >
         <Box flexGrow={1} overflow="auto" p={2}>
@@ -150,11 +162,7 @@ const App: React.FC = () => {
                       <TableDisplay data={msg.data} key={resizeTrigger} />
                     </CenteredBox>
                   }
-                  {msg.type === 'code' && msg.data &&
-                    <CenteredBox>
-                      <CodeDisplay data={msg.data} key={resizeTrigger} />
-                    </CenteredBox>
-                  }
+                  
                   {msg.type === 'text' && msg.data && <TextDisplay data={msg.data} />}
 
                   <Typography
@@ -176,17 +184,25 @@ const App: React.FC = () => {
           })}
         </Box>
 
+
         {/* Input Box */}
         <Box p={2} bgcolor="background.paper">
+          {/* <Box >
+          <IconButton color="primary" onClick={handleClick}>
+            <KeyboardDoubleArrowDownSharpIcon />
+            </IconButton>
+
+          </Box> */}
           <Box display="flex" alignItems="center">
             <TextField
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               fullWidth
               placeholder="Type a message..."
               variant="outlined"
             />
-            <IconButton color="primary" onClick={handleSend}>
+            <IconButton color="primary" onClick={handleClick}>
               <SendIcon />
             </IconButton>
           </Box>
@@ -197,3 +213,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+

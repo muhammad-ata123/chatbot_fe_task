@@ -11,7 +11,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ text, user }) => {
         sx={{
           backgroundColor: user ? '#1751D0' : '#F4F9F8',
           color: user ? 'white' : 'black',
-          boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+          // boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
           borderRadius: user?  '20px 20px 10px 20px' : '10px 20px 20px 20px',
           padding: '10px',
           maxWidth: '100%',

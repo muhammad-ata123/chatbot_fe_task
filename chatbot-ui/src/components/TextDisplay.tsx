@@ -18,7 +18,7 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ data }) => {
         padding: '10px',
         backgroundColor: '#F4F9F8',
         borderRadius: '10px 20px 20px 20px',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        // boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         marginBottom: '10px',
       }}
     >

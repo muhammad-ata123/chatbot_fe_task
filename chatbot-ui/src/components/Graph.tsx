@@ -78,7 +78,7 @@ const Graph: React.FC<GraphProps> = ({ data }) => {
     <Box
     sx={{
       backgroundColor: '#F4F9F8',
-      boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+      // boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
       color: 'black',
       borderRadius: '10px 20px 20px 20px',
       padding: '10px',
