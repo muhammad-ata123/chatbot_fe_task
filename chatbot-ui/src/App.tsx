@@ -5,7 +5,6 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHooks';
 import { addMessage } from './features/chatSlice';
 import MessageBubble from './components/MessageBubble';
-import Graph from './components/Graph';
 import TableDisplay from './components/TableDisplay';
 import TextDisplay from './components/TextDisplay';
 import { JsonCode, JsonTable, JsonGraph, JsonTextResponses } from "./json";
@@ -152,11 +151,11 @@ const App: React.FC = () => {
                 )}
                 <Box maxWidth="70%" display="flex" flexDirection="column">
                   {msg.type === 'text' && <MessageBubble text={msg.text} user={msg.user} />}
-                  {msg.type === 'graph' && msg.data &&
+                  {/* {msg.type === 'graph' && msg.data &&
                     <CenteredBox>
                       <Graph data={msg.data} key={resizeTrigger} />
                     </CenteredBox>
-                  }
+                  } */}
                   {msg.type === 'table' && msg.data &&
                     <CenteredBox>
                       <TableDisplay data={msg.data} key={resizeTrigger} />
