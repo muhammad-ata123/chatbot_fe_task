@@ -5,16 +5,25 @@ export interface Message {
   type: 'text' | 'graph' | 'table' | 'code'; // Include all types here
   text?: string; // Optional text for user message
   data?: any; // Optional text data for bot responses
-  timestamp?: string; // timestamp property
+  timestamp: string; // timestamp property
 }
-
 
 interface ChatState {
   messages: Message[]; 
 }
 
 const initialState: ChatState = {
-  messages: [{ user: false, type: 'text', text: 'Hello! How can I assist you today?' }]
+  messages: [{ user: false, type: 'text', text: 'Hello! How can I assist you today?' , timestamp:new Date().toLocaleDateString(
+    'en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+    }
+  ) }]
 };
 
 const chatSlice = createSlice({

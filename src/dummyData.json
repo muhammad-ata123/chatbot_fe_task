@@ -1,4 +1,5 @@
-const JsonTable = [
+{
+  "JsonTable": [
     {
       "type": "table",
       "columns": ["Product", "Category", "Price", "Stock", "Rating", "Supplier"],
@@ -26,9 +27,8 @@ const JsonTable = [
         ["Charlie", "Design", "$80,000", "4 years"]
       ]
     }
-  ];
-  
-  const JsonGraph = [
+  ],
+  "JsonGraph": [
     {
       "type": "bar",
       "labels": ["January", "February", "March"],
@@ -76,9 +76,8 @@ const JsonTable = [
         }
       ]
     }
-  ];
-
-const JsonCode = [
+  ],
+  "JsonCode": [
     {
       "language": "JavaScript",
       "code": "function helloWorld() {\n  console.log('Hello, World!');\n}",
@@ -101,7 +100,7 @@ const JsonCode = [
     },
     {
       "language": "Ruby",
-      "code": "class Greeter\n  def greet(name)\n    puts \"Hello, \#{name}!\"\n  end\nend\n\ngreeter = Greeter.new\ngreeter.greet('World')",
+      "code": "class Greeter\n  def greet(name)\nputs \"Hello, #{name}!\"\n  end\nend\n\ngreeter = Greeter.new\ngreeter.greet('World')",
       "description": "This Ruby class defines a method to greet a person by name."
     },
     {
@@ -114,18 +113,14 @@ const JsonCode = [
       "code": "using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"Hello, World!\");\n    }\n}",
       "description": "This C# program prints 'Hello, World!' to the console."
     }
-  ];
-
-  const JsonTextResponses = [
-    
+  ],
+  "JsonTextResponses": [
     {
       "responses": {
         "text": "Our application offers a wide range of functionalities designed to meet the needs of diverse users. From managing tasks to tracking progress, each feature has been developed with user feedback in mind to ensure an intuitive and efficient experience."
       }
     }
-  ];
-  
-  
-  
-  export { JsonTable, JsonGraph, JsonCode ,JsonTextResponses };
-  
+  ]
+}
+
+
