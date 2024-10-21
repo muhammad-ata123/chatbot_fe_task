@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+// created for future dev...  
+
 // Define the structure for TableDisplay data
 interface TableDisplayData {
   type: string; // Type of table (you can specify further)

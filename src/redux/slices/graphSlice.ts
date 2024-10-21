@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+// created for future dev...  
+
 interface GraphMessageData {
   type: 'bar' | 'line' | 'pie'; // Type of graph
   labels: string[]; // Labels for the graph

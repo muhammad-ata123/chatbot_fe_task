@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+// created for future dev...  
+
 // Define the structure of the text data
 interface TextMessageData {
   type: 'small' | 'big'; // Type of text message
