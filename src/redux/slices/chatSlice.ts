@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 // working only slice 
+
 export interface Message {
   user: boolean; // Indicates if the message is from the user or bot
   type: 'text' | 'graph' | 'table' | 'code'; // Include all types here
