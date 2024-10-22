@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { CopyBlock, github } from 'react-code-blocks';
+import { Box, Typography, useTheme } from '@mui/material';
+import { CopyBlock, github, atomOneDark } from 'react-code-blocks';
 
 interface CodeDisplayProps {
   data: {
@@ -11,14 +11,16 @@ interface CodeDisplayProps {
 }
 
 const CodeDisplay: React.FC<CodeDisplayProps> = ({ data }) => {
-  
+  const theme = useTheme();
+  const codeBlockTheme = theme.palette.mode === 'dark' ? atomOneDark : github;
+
   return (
     <Box
       sx={{
-        backgroundColor: '#F4F9F8',
-        color: 'black',
-        borderRadius: '10px 20px 20px 20px',
-        // boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+        backgroundColor: theme.palette.background.paper,
+        border: `10px solid #F4F9F8`,
+        color: theme.palette.text.primary, 
+        borderRadius: '2px 20px 20px 20px',
         padding: '10px',
         width: '100%',
         height: 'auto',
@@ -32,7 +34,7 @@ const CodeDisplay: React.FC<CodeDisplayProps> = ({ data }) => {
         text={data.code}
         language={data.language}
         showLineNumbers={true}
-        theme={github}
+        theme={codeBlockTheme}
         codeBlock
       />
       <Typography sx={{ marginTop: '10px' }}>
@@ -43,4 +45,3 @@ const CodeDisplay: React.FC<CodeDisplayProps> = ({ data }) => {
 };
 
 export default CodeDisplay;
-

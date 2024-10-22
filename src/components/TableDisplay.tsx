@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography ,useTheme } from '@mui/material';
 
 interface TableDisplayProps {
   data: {
@@ -10,13 +10,14 @@ interface TableDisplayProps {
 }
 
 const TableDisplay: React.FC<TableDisplayProps> = ({ data }) => {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
         padding: '20px',
         backgroundColor: '#F4F9F8',
-        borderRadius: '10px 20px 20px 20px',
-        // boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+        borderRadius: '2px 20px 20px 20px',
         width: '100%',
         height: 'auto',
         position: 'relative',
@@ -24,8 +25,8 @@ const TableDisplay: React.FC<TableDisplayProps> = ({ data }) => {
         margin: '0 auto',
       }}
     >
-      <Typography variant="h6" align="center" sx={{ marginBottom: '16px' }}>
-        {data.type}
+      <Typography variant="h6" align="center" sx={{ marginBottom: '16px', color: theme.palette.text.secondary }}>
+      {data.type}
       </Typography>
 
       <TableContainer component={Paper} sx={{ borderRadius: '8px' }}>
