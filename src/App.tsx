@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, TextField, IconButton, Paper, Typography, Stack, AppBar, Toolbar, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHooks';
-import { addMessage, Message } from './redux/slices/chatSlice';
+import { addMessage, Message , resetChat } from './redux/slices/chatSlice';
 import MessageBubble from './components/MessageBubble';
 import TableDisplay from './components/TableDisplay';
 import TextDisplay from './components/TextDisplay';
 import GraphDisplay from './components/GraphDisplay';
 import CodeDisplay from './components/CodeDisplay';
 import CenteredBox from './components/CenteredBox';
+import Header from './components/Header';
 import jsonData from "./dummyData.json";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { getBotResponse } from './utils/responseUtils';
 import './App.css';
-import Header from './components/Header';
 
 interface AppProps {
   toggleTheme: () => void;
@@ -31,6 +32,34 @@ const App: React.FC<AppProps> = ({ toggleTheme, isDarkMode }) => {
   const graphData = JsonGraph;
   const codeData = JsonCode;
   const textData = JsonTextResponses;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setResizeTrigger((prev) => prev + 1); 
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const savedMessages = localStorage.getItem('chatMessages');
+    if (savedMessages) {
+      JSON.parse(savedMessages).forEach((message: Message) => {
+        dispatch(addMessage(message));
+      });
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+  }, [messages]);
+
+  const handleDelete = () => {
+    dispatch(resetChat()); 
+    localStorage.removeItem('chatMessages'); 
+  };
 
   const handleSend = (event: any) => {
     if (chatInput.trim() !== '') {
@@ -149,6 +178,9 @@ const App: React.FC<AppProps> = ({ toggleTheme, isDarkMode }) => {
               />
               <IconButton color="primary" onClick={handleClick}>
                 <SendIcon />
+              </IconButton>
+              <IconButton color="secondary" onClick={handleDelete}>
+                <DeleteIcon />
               </IconButton>
             </Box>
           </Box>

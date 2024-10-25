@@ -21,7 +21,7 @@ const TableDisplay: React.FC<TableDisplayProps> = ({ data }) => {
         width: '100%',
         height: 'auto',
         position: 'relative',
-        overflow: 'hidden',
+        overflow:'auto',
         margin: '0 auto',
       }}
     >
@@ -30,7 +30,7 @@ const TableDisplay: React.FC<TableDisplayProps> = ({ data }) => {
       </Typography>
 
       <TableContainer component={Paper} sx={{ borderRadius: '8px' }}>
-        <Table sx={{ minWidth: 350 }} aria-label="dynamic table">
+        <Table sx={{ minWidth: 350 , height:"auto"}} aria-label="dynamic table">
           <TableHead>
             <TableRow>
               {data.columns.map((column, index) => (

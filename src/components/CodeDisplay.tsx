@@ -22,9 +22,10 @@ const CodeDisplay: React.FC<CodeDisplayProps> = ({ data }) => {
         color: theme.palette.text.primary, 
         borderRadius: '2px 20px 20px 20px',
         padding: '10px',
-        width: '100%',
+        width: '100vw',
         height: 'auto',
         alignSelf: 'flex-start',
+        overflow:'auto'
       }}
     >
       <Typography variant="body1" sx={{ marginBottom: '5px', fontWeight: 'bold' }}>
